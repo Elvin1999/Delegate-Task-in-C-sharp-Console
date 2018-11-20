@@ -7,6 +7,7 @@ namespace DelegateTask
 {
     class MyClass
     {
+
         public void Space(string str)
         {
             var str2 = string.Empty;
@@ -18,25 +19,29 @@ namespace DelegateTask
         }
         public void Reverse(string str)
         {
-            var newstr=str.Reverse();
+            var newstr = str.Reverse();
             Console.WriteLine(newstr);
         }
     }
+    class Run
+    {
+        public void runFunc(Func argument, string str)
+        {
+            argument.Invoke(str);
+        }
+    }
+    delegate void Func(string argument);
     class Program
     {
         static void Main(string[] args)
         {
-            //   Console.WriteLine("Enter string");
-
-            // var str = Console.ReadLine();
-            //       MyClass cls = new MyClass(str);
-            //     Func funcDell = new Func(params) // params sadece sizin ora vereceyiniz parametrlerdi	
-
-            // burda funcDell-e functionlari verirsiniz
-
-            // Run run = new Run();
-            //         run.runFunc(funcDell, str); //cagiranda Space() ve Reverse() functionlari ise dusmelidir
-            //     }
+            Console.WriteLine("Enter string");
+            var str = Console.ReadLine();
+            MyClass cls = new MyClass();
+            Func funcDell = new Func(cls.Reverse);
+            funcDell += cls.Space;
+            Run run = new Run();
+            run.runFunc(funcDell, str);
         }
     }
 }
