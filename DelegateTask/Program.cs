@@ -7,20 +7,21 @@ namespace DelegateTask
 {
     class MyClass
     {
-
         public void Space(string str)
         {
-            var str2 = string.Empty;
+            var str2 = "";
             for (int i = 0; i < str.Length; i++)
             {
                 str2 += str[i] + " ";
             }
-            Console.WriteLine(str2);
+            Console.WriteLine($"Space   :{str2}");
         }
         public void Reverse(string str)
         {
-            var newstr = str.Reverse();
-            Console.WriteLine(newstr);
+            var nstr = str.ToCharArray();
+            Array.Reverse(nstr);
+            string strnew = new string(nstr);
+            Console.WriteLine($"Reverse :{strnew} ");
         }
     }
     class Run
